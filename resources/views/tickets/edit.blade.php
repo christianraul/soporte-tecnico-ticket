@@ -4,7 +4,7 @@
     <div class="container py-4">
         <div class="card shadow border-0">
             <div class="card-header text-white d-flex justify-content-between align-items-center"
-                style="background-color: #0000a5;">
+                style="background-color: #a50000;">
                 <h5 class="mb-0">Editar Ticket: {{ $ticket->codigo_ticket }}</h5>
                 <a href="{{ route('tickets.index') }}" class="btn btn-sm btn-light">Volver</a>
             </div>
@@ -76,7 +76,7 @@
 
                     <div class="mt-4 text-end">
                         <button type="submit" class="btn text-white px-4" style="background-color: #0000a5;">
-                            <i class="fas fa-save"></i> Actualizar Cambios
+                            💾 Actualizar
                         </button>
                     </div>
                 </form>

@@ -151,7 +151,9 @@
                                     </h6>
                                     <hr>
                                     <label class="form-label fw-bold">Fecha y Hora de Entrega</label>
-                                    <input type="datetime-local" name="fecha_entrega_estimada" class="form-control"
+                                    <input type="datetime-local" 
+                                        name="fecha_entrega_estimada" 
+                                        class="form-control"
                                         value="{{ old('fecha_entrega_estimada', isset($ticket) ? \Carbon\Carbon::parse($ticket->fecha_entrega_estimada)->format('Y-m-d\TH:i') : '') }}"
                                         required>
                                     @error('fecha_entrega_estimada')
@@ -162,8 +164,7 @@
 
                             <div class="text-end border-top pt-4">
                                 <button type="submit" class="btn btn text-white px-4 shadow-sm"
-                                    style="background-color: #00a545;">
-                                    REGISTRAR <i class="fas fa-print ms-2"></i>
+                                    style="background-color: #00a545;"> <i class="bi bi-floppy2-fill"> Registrar</i>
                                 </button>
                             </div>
                         </form>

@@ -32,7 +32,7 @@ class TicketController extends Controller
             'documento_identidad' => 'required|string|max:20',
             'nombre' => 'required|string|max:100',
             'telefono' => 'required|string|max:20',
-            'tipo_equipo' => 'required|string',
+            /* 'tipo_equipo' => 'required|string', */
             'marca' => 'required|string',
             'modelo' => 'required|string',
             'problema_reportado' => 'required|string',
@@ -50,7 +50,6 @@ class TicketController extends Controller
             );
 
             $equipo = $cliente->equipos()->create($request->only(['tipo_equipo', 'marca', 'modelo', 'numero_serie']));
-
             $ticket = $equipo->tickets()->create([
                 'codigo_ticket' => 'TKT-' . strtoupper(bin2hex(random_bytes(3))), // Código más limpio
                 'problema_reportado' => $request->problema_reportado,
@@ -113,7 +112,7 @@ class TicketController extends Controller
         $ticket = Ticket::with(['equipo.cliente'])->findOrFail($id);
 
         $pdf = Pdf::loadView('pdf.ticket', compact('ticket'))
-            ->setPaper([0, 0, 226.77, 600], 'portrait'); 
+            ->setPaper([0, 0, 419.53, 595.28], 'portrait'); 
 
         return $pdf->stream("ticket_{$ticket->codigo_ticket}.pdf");
     }

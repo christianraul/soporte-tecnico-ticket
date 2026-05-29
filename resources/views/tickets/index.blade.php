@@ -4,8 +4,8 @@
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h3 class="text-institucional fw-bold">📋 Registro de Tickets</h3>
-            <a href="{{ route('tickets.create') }}" class="btn btn-primary">
-                + Nuevo Ingreso
+            <a href="{{ route('tickets.create') }}" class="btn btn-primary" style="font-family: "Google Sans", sans-serif; font-weight: 600;">
+             Nuevo Ingreso
             </a>
         </div>
 
@@ -52,7 +52,7 @@
                                             // Si el estado no existe en el mapa, usamos bg-info por defecto
                                             $colorClase = $colores[$ticket->estado] ?? 'bg-info';
                                         @endphp
-                                        
+
                                         <span class="badge rounded-pill {{ $colorClase }}">
                                             {{ ucfirst($ticket->estado) }}
                                         </span>
@@ -60,25 +60,39 @@
                                     </td>
                                     <td>
                                         <span>
-                                            {{ ucfirst($ticket->fecha_entrega_estimada->format('d/m/Y h:i A') ) }}
+                                            {{ $ticket->fecha_entrega_estimada->format('d/m/Y H:i') }}
+                                            {{-- {{ $ticket->fecha_entrega_estimada ? $ticket->fecha_entrega_estimada->format('d/m/Y g:i A') : 'No asignada' }} --}}
                                         </span>
                                     </td>
-                                    <td class="text-center pe-4 mr-2">
-                                        <div class="btn-group">
+                                    <td class="text-center">
+                                        <div class="d-flex justify-content-center align-items-center gap-1">
+                                            <!-- Enlace Ver Detalle -->
                                             <a href="{{ route('tickets.show', $ticket->id) }}"
-                                                class="btn btn-sm btn-outline-secondary mr-2" title="Ver Detalle"><i class="bi bi-eye-fill"></i></a>
-                                            <a href="{{ route('tickets.edit', $ticket->id) }}"
-                                                class="btn btn-sm btn-outline-warning mr-2" title="Editar"><i class="bi bi-pencil-fill"></i></a>
+                                                class="btn btn-sm btn-outline-secondary" title="Ver Detalle">
+                                                <i class="bi bi-eye-fill"></i>
+                                            </a>
 
+                                            <!-- Enlace Editar -->
+                                            <a href="{{ route('tickets.edit', $ticket->id) }}"
+                                                class="btn btn-sm btn-outline-warning" title="Editar">
+                                                <i class="bi bi-pencil-fill"></i>
+                                            </a>
+
+                                            <!-- Formulario Eliminar -->
                                             <form action="{{ route('tickets.destroy', $ticket->id) }}" method="POST"
-                                                onsubmit="return confirm('¿Estás seguro de eliminar este ticket?')">
+                                                onsubmit="return confirm('¿Estás seguro de eliminar este ticket?')"
+                                                class="m-0">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-outline-danger ml-2"
-                                                    title="Eliminar"><i class="bi bi-trash"></i></button>
+                                                <button type="submit" class="btn btn-sm btn-outline-danger"
+                                                    title="Eliminar">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
                                             </form>
                                         </div>
                                     </td>
+
+
                                 </tr>
                             @endforeach
                         </tbody>

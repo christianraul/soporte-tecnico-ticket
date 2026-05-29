@@ -13,7 +13,7 @@
         }
         .ticket {
             width: 100%;
-            max-width: 280px; /* Aprox 80mm */
+            max-width: 1748px; /* Aprox 80mm */
             margin: auto;
         }
         .header {
@@ -57,9 +57,9 @@
     <div class="ticket">
         <div class="header">
             <img src="{{ public_path('img/soporte-tecnico-2.png') }}" width="50" height="50" alt="Logo" style="padding: 5px">
-            <h2 style="margin:0;">INTEGRAL PRO</h2>
+            <h2 style="margin:0;">IP COMPUTER</h2>
             <p style="margin:0;">RUC: 10253624510</p>
-            <p style="margin:0;">Dirección: Jirón Lima N° 159</p>
+            <p style="margin:0;">Jirón Lima N° 159 - Huancayo</p>
             <h2 style="margin:5px 0;">SOPORTE TÉCNICO</h2>
             <p style="margin:5px 0;">{{ $ticket->codigo_ticket }}</p>
             <p style="margin:0;">Fecha: {{ $ticket->created_at->format('d/m/Y H:i') }}</p>
@@ -79,7 +79,7 @@
         <div class="info-row"><span class="label">Accesorios:</span> {{ $ticket->accesorios ?? 'Ninguno' }}</div>
         <div class="info-row"><span class="label">Obs:</span> {{ $ticket->observaciones ?? 'Sin observaciones' }}</div>
 
-        <div class="section-title">Detalle del Egreso</div>
+        <div class="section-title">Detalle de la Entrega</div>
         <div class="info-row"><span class="label">Fecha/Entrega:</span> {{ $ticket->fecha_entrega_estimada->format('d/m/Y H:i') }}</div>
 
         <div class="footer">
